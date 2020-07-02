@@ -1,0 +1,170 @@
+EX 1-1
+Level 2 Thinking
+Purpose is to show failures
+Looking for failures is a negative activity
+Puts testers and developers into an adversarial relationship
+Level 4 Thinking
+	A mental discipline that increases quality
+Testing is only one way to increase quality
+Test engineers can become technical leaders of the project
+Primary responsibility to measure and improve software quality
+Their expertise should help the developers
+	This is the way “traditional” engineering works
+So from those describe above we can think of some factors that would help a development organization move from Beizer’s testing level 2 (testing is to show errors) to testing level 4 (a mental discipline that increases quality)  like : 
+	+ experience
+	+ responsibility
+	+ technical
+	+ skills 
+	+ Goodcommunication to lead 
+  + expertise
+  
+  
+Ex 1-3
+Testing can only show the presence of failures
+Whenever we use software, we incur some risk
+Risk may be small and consequences unimportant
+Risk may be great and consequences catastrophic
+Testers and developers cooperate to reduce risk
+
+Ex 1-4
+1-4
+public static Vector union(Vector a, Vector b)
+  { Vector res = new Vector();
+    for (int i = 0; i < a.size(); i++)
+    { Object aobj = a.elementAt(i);
+      if (res.contains(aobj)) {}
+      else { res.add(aobj); } 
+    }
+    for (int j = 0; j < b.size(); j++)
+    { Object bobj = b.elementAt(j);
+      if (res.contains(bobj)) {}
+      else { res.add(bobj); } 
+    }
+    return res; 
+  }
+  
+  Ex 1-5
+  Ex1-5
+findLast()
+```Java
+// findLast()
+public static int findLast (int[] x, int y)
+   {
+      // As the example in the book points out, this loop should end at 0.
+      for (int i=x.length-1; i > 0; i--)
+      {
+         if (x[i] == y)
+         {
+            return i;
+         }
+      }
+      return -1;
+   }
+```
+lastZero
+```Java
+// lastZero()
+public static int lastZero (int[] x)
+   {
+      for (int i = 0; i < x.length; i++)
+      {
+         if (x[i] == 0)
+         {
+            return i;
+         }
+      }
+      return -1;
+   }
+```
+countPositive
+```Java
+// countPositive()
+public static int countPositive (int[] x)
+   {
+      int count = 0;
+      for (int i=0; i < x.length; i++)
+      {
+         if (x[i] >= 0)
+         {
+            count++;
+         }
+      }
+      return count;
+   }
+```
+oddOrPos
+```Java
+// oddOrPos()
+public static int oddOrPos (int[] x)
+   {  // Effects:  if x is null throw NullPointerException
+      // else return the number of elements in x that
+      //      are either odd or positive (or both)
+      int count = 0;
+      for (int i = 0; i < x.length; i++)
+      {
+         if (x[i]%2 == 1 || x[i] > 0)
+         {
+            count++;
+         }
+      }
+      return count;
+   }
+```
+a)
+
+- The fault in findLast() is in condition of for loop. One of possible modification is:
+```Java
+for (int i=x.length-1; i >= 0; i--)
+```
+
+- The fault in lastZero() is lack of statements. One of possible modification is:
+```Java
+public static int lastZero (int[] x)
+   {
+      int index = 0;
+      for (int i = 0; i < x.length; i++)
+      {
+         if (x[i] == 0) index = i;
+      }
+      return -1;
+   }
+```
+
+- The fault in countPositive() is the redundancy in if statement in for loop. One of possible modification is:
+```Java
+if (x[i] > 0)
+```
+
+- The fault in oddOrPos() is in the if statement in for loop. One of possible modification is:
+```Java
+if (x[i] > 0)
+{
+  count++;
+}
+else
+{
+  if (x[i]%2 ==1 ) count++;
+}
+```
+b)
+
+- Test case for findLast() `int[] x = {1,2,3}` and `y = 2`
+
+- Test case for lastZero() `int[] x = {0, 1, 1}`
+
+- Test case for countPositive() `int[] x = {-2, 4, -6}`
+
+- Test case for oddOrPos() `int[] x = {1, 2, 3}`
+
+c)
+
+- Test case for findLast() `int[] x = {1, 1, 1}` and `y = 1`
+
+- Test case for lastZero() `int[] x = {0}`
+
+- Test case for countPositive() Not Possible
+
+- Test case for oddOrPos() `int[] x = {1, 2, 3}`
+
+d)
+The programmer design test cases wrongly.
